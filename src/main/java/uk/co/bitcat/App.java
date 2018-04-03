@@ -48,11 +48,11 @@ public class App {
             List<Tuple2<String, Integer>> moneyMovement = new ArrayList<>();
 
             for (TransactionInput input : tx.getInputs().values()) {
-                moneyMovement.add(new Tuple2<String, Integer>(input.getAddress(), -input.getAmount()));
+                moneyMovement.add(new Tuple2<>(input.getAddress(), -input.getAmount()));
             }
 
             for (TransactionOutput output : tx.getOutputs().values()) {
-                moneyMovement.add(new Tuple2<String, Integer>(output.getAddress(), output.getAmount()));
+                moneyMovement.add(new Tuple2<>(output.getAddress(), output.getAmount()));
             }
 
             return moneyMovement.iterator();
