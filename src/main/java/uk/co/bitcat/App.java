@@ -43,21 +43,15 @@ public class App {
 
         JavaRDD<Transaction> rdd = pairRdd.map(App::convertRowToTransaction);
 
-        rdd.flatMapToPair(tx -> {
+        rdd
+                //TODO:: Convert the RDD of transactions to an RDD of key value pairs of the form
+                //TODO:: (accountId, creditOrDebitAmount) then reduce these so the RDD contains key value pairs
+                //TODO:: of the form (accountId, balance).  For help see:
+                //TODO:: https://spark.apache.org/docs/2.3.0/rdd-programming-guide.html#working-with-key-value-pairs
+                //TODO:: be sure to click the Java tab to get the correct information.
+                //TODO:: Remember the difference between map and flat map, it's important here.
 
-            List<Tuple2<String, Integer>> moneyMovement = new ArrayList<>();
-
-            for (TransactionInput input : tx.getInputs().values()) {
-                moneyMovement.add(new Tuple2<>(input.getAddress(), -input.getAmount()));
-            }
-
-            for (TransactionOutput output : tx.getOutputs().values()) {
-                moneyMovement.add(new Tuple2<>(output.getAddress(), output.getAmount()));
-            }
-
-            return moneyMovement.iterator();
-
-        }).reduceByKey((a, b) -> a + b).collect().forEach(System.out::println);
+        .collect().forEach(System.out::println);
 
         sc.stop();
     }
