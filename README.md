@@ -9,4 +9,4 @@
 ## To Run
 
 * Right click the App class in an IDE such as IntelliJ or Eclipse and click run.
-* NOT RECOMMENDED DUE TO A SHUTDOWN BUG: Alternatively run `mvn exec:java` in a terminal in the same directory as this README after a `mvn clean install`.
+* Alternatively run `mvn exec:java` in a terminal in the same directory as this README after a `mvn clean install`.

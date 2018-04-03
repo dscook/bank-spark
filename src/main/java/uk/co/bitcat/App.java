@@ -58,6 +58,8 @@ public class App {
             return moneyMovement.iterator();
 
         }).reduceByKey((a, b) -> a + b).collect().forEach(System.out::println);
+
+        sc.stop();
     }
 
     private static Transaction convertRowToTransaction(final Tuple2<Key, Value> row) throws IOException {
